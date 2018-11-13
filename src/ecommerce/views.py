@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .forms import ContactForm
+
 def home_page(request):
     context = {
         "title":"Hello World!",##the name title here is used in home_page
@@ -16,9 +18,11 @@ def about_page(request):
     return render(request, "home_page.html",context)
 
 def contact_page(request):
-    context = {
+    contact_form = ContactForm()#here we need to instance the form (ContactForm)
+    context = {#dictionary
         "title":"Contact",
-        "content": "Welcome to the contact page."##the name title here is used in home_page
+        "content": "Welcome to the contact page.",##the name title here is used in home_page
+        "form": contact_form
     }
     if request.method == "POST":
        # print(request.POST)
