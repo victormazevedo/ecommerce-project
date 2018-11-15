@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .forms import ContactForm
+from .forms import LoginForm
 
 def home_page(request):
     context = {
@@ -18,18 +19,44 @@ def about_page(request):
     return render(request, "home_page.html",context)
 
 def contact_page(request):
-    contact_form = ContactForm()#here we need to instance the form (ContactForm)
+    contact_form = ContactForm(request.POST or None)#here we need to instance the form (ContactForm) if it's POST data, pass it to the Form, if it's not pass None
+    #now we have to add a form to the context
     context = {#dictionary
         "title":"Contact",
         "content": "Welcome to the contact page.",##the name title here is used in home_page
         "form": contact_form
     }
-    if request.method == "POST":
-       # print(request.POST)
-        print(request.POST.get('fullname'))
-        print(request.POST.get('email'))
-        print(request.POST.get('content'))
+    if contact_form.is_valid():
+        print(contact_form.cleaned_data)
+    # if request.method == "POST":
+    #    # print(request.POST)
+    #     print(request.POST.get('fullname'))
+    #     print(request.POST.get('email'))
+    #     print(request.POST.get('content'))
     return render(request, "contact/view.html",context)
+
+
+def login_page(request):
+    #creating a instance for the login form
+    # If the form was POSTed then it would have data and therefore construct the instance of the form with the data so it can be further 
+    # validated later on using the is_valid method, if it had no data then it wouldn't 
+    # be able to be validated since the is_valid method calls is_bound which looks to see if there is data.
+    form = LoginForm(request.POST or None)
+    context = {
+        "form": form
+    }
+    print("User logged in")
+    print(request.user.is_authenticated())
+    if form.is_valid():
+        print(form.cleaned_data)
+        context['form'] = LoginForm()
+    return render(request,"auth/login.html", context)
+
+def register_page(request):
+    form = LoginForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+    return render(request,"auth/register.html",{})
 
 def home_page_old(request):
     html_ = """
