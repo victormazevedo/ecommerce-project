@@ -1,29 +1,35 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
-from .forms import ContactForm
-from .forms import LoginForm
+from .forms import ContactForm, LoginForm, RegisterForm
+
 
 def home_page(request):
     context = {
-        "title":"Hello World!",##the name title here is used in home_page
-        "content": "Welcome to the homepage."
+        "title": "Primeira Página!",  ##the name title here is used in home_page
+        "content": "Bem-vindo ao PedeRango!",
     }
-    return render(request, "home_page.html",context)
+    if request.user.is_authenticated():
+        context["premium_content"] = "UHU, TÔ LOGADO!"
+    return render(request, "home_page.html", context)
+
 
 def about_page(request):
     context = {
-        "title":"About Page",
-        "content": "Welcome to the about page."##the name title here is used in home_page
+        "title": "About Page",
+        "content": "Bem-vindo a about page."  ##the name title here is used in home_page
     }
-    return render(request, "home_page.html",context)
+    return render(request, "home_page.html", context)
+
 
 def contact_page(request):
-    contact_form = ContactForm(request.POST or None)#here we need to instance the form (ContactForm) if it's POST data, pass it to the Form, if it's not pass None
-    #now we have to add a form to the context
-    context = {#dictionary
-        "title":"Contact",
-        "content": "Welcome to the contact page.",##the name title here is used in home_page
+    contact_form = ContactForm(
+        request.POST or None)  # here we need to instance the form (ContactForm) if it's POST data, pass it to the Form, if it's not pass None
+    # now we have to add a form to the context
+    context = {  # dictionary
+        "title": "Contato",
+        "content": "Bem-vindo a página de contato!",  ##the name title here is used in home_page
         "form": contact_form
     }
     if contact_form.is_valid():
@@ -33,30 +39,57 @@ def contact_page(request):
     #     print(request.POST.get('fullname'))
     #     print(request.POST.get('email'))
     #     print(request.POST.get('content'))
-    return render(request, "contact/view.html",context)
+    return render(request, "contact/view.html", context)
+
+    # remember: you need to create an user in python manage.py superuser
+    # if you try to login with some other user,
 
 
 def login_page(request):
-    #creating a instance for the login form
-    # If the form was POSTed then it would have data and therefore construct the instance of the form with the data so it can be further 
-    # validated later on using the is_valid method, if it had no data then it wouldn't 
-    # be able to be validated since the is_valid method calls is_bound which looks to see if there is data.
+    # creating a instance for the login form If the form was POSTed then it would have data and therefore construct
+    # the instance of the form with the data so it can be further validated later on using the is_valid method,
+    # if it had no data then it wouldn't be able to be validated since the is_valid method calls is_bound which looks
+    # to see if there is data.
     form = LoginForm(request.POST or None)
     context = {
         "form": form
     }
-    print("User logged in")
-    print(request.user.is_authenticated())
+    print("User logged in: ")
+    # print(request.user.is_authenticated())
     if form.is_valid():
         print(form.cleaned_data)
-        context['form'] = LoginForm()
-    return render(request,"auth/login.html", context)
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        if user is not None:
+            # print(request.user.is_authenticated())
+            login(request, user)
+            # context['form'] = LoginForm()
+            return redirect("/")
+        else:
+            print("Error")
+
+    return render(request, "auth/login.html", context)
+
+
+User = get_user_model()
+
 
 def register_page(request):
-    form = LoginForm(request.POST or None)
+    form = RegisterForm(request.POST or None)
+    context = {
+        "form": form
+    }
     if form.is_valid():
         print(form.cleaned_data)
-    return render(request,"auth/register.html",{})
+        username = form.cleaned_data.get("username")
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
+        new_user = User.objects.create_user(username, email, password)
+        print(new_user)
+    return render(request, "auth/register.html", context)
+
 
 def home_page_old(request):
     html_ = """
