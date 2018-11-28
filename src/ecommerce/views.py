@@ -1,6 +1,7 @@
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 
 from .forms import ContactForm, LoginForm, RegisterForm
 
@@ -20,7 +21,7 @@ def about_page(request):
         "title": "About Page",
         "content": "Bem-vindo a about page."  ##the name title here is used in home_page
     }
-    return render(request, "home_page.html", context)
+    return render(request, "about.html", context)
 
 
 def contact_page(request):

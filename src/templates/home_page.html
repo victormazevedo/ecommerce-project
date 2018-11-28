@@ -8,6 +8,8 @@
       <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
       <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.css" />
    </head>
    <body>
       {% if request.user.is_authenticated %}
@@ -42,7 +44,23 @@
                         <a href="cadastrar-usuarios.html" class="navbar-item">
                         Fale Conosco
                         </a>
+                         <a href="/sobre" class="navbar-item">
+                        Sobre
+                        </a>
                      </div>
+
+                      <div class="navbar-end">
+                        <span class="navbar-item">
+                            <span class="tag is-white">Olá {{ user.get_username }}</span>
+                            <span class="tag is-black" style="margin-left: 10px;">
+                                <a href="/logout"><span>Sair</span>
+                                    <span class="icon">
+                                        <i class="fas is-small fa-sign-out-alt"></i>
+                                    </span>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
                   </div>
                </div>
             </nav>
@@ -62,41 +80,32 @@
             <div class="column is-full">
                <form>
                   <div class="box">
-                     <div class="field">
-                        <label class="label">Usuário</label>
-                        <div class="control has-icons-left has-icons-right">
-                           <input class="input" type="text" placeholder="Digite o ID do usuário" required>
-                           <span class="icon is-small is-left">
-                           <i class="fas fa-user"></i>
-                           </span>
-                        </div>
-                     </div>
                      <div class="field is-grouped">
                         <div class="control is-expanded">
-                           <label class="label">Produto</label>
-                           <div class="control has-icons-left">
-                              <div class="select">
-                                 <select style="width: 440px">
-                                    <option>Produto 1</option>
-                                    <option>Produto 2</option>
-                                    <option>Produto 3</option>
-                                 </select>
-                              </div>
-                              <span class="icon is-left">
-                              <i class="fas fa-cart-arrow-down"></i>
-                              </span>
-                           </div>
+                            <label class="label">Produto</label>
+                            <div class="control ">
+                                <select id="select-produtos"
+                                        style="width: 100%;"
+                                        placeholder="Selecione um produto">
+                                    <option value="">Selecione um produto</option>
+                                    <option value="1">Produto 1</option>
+                                    <option value="2">Produto 2</option>
+                                    <option value="3">Produto 3</option>
+                                </select>
+                            </div>
                         </div>
+
                         <div class="control">
-                           <label class="label">Quantidade</label>
-                           <div class="control has-icons-left has-icons-right">
-                              <input class="input" style="width: 180px;" type="number" min="0" placeholder="Quantidade" required>
-                              <span class="icon is-small is-left">
-                              <i class="fas fa-infinity"></i>
-                              </span>
-                           </div>
+                            <label class="label">Quantidade</label>
+
+                            <div class="control has-icons-left has-icons-right">
+                                <input class="input" style="width: 180px;" type="number" min="0" placeholder="Quantidade" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-infinity"></i>
+                                </span>
+                            </div>
                         </div>
-                     </div>
+                    </div>
                   </div>
                   <div class="field is-grouped is-grouped-right">
                      <div class="control">
@@ -109,6 +118,13 @@
                </form>
             </div>
          </div>
+
+          <script type="text/javascript">
+            $('#select-produtos').selectize({
+                create: false,
+                sortField: 'text'
+            });
+          </script>
       </div>
       <!-- CONTENT - END -->
       {% else %}

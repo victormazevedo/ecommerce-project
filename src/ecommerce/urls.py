@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf import settings
+from django.contrib.auth.views import logout
 from django.contrib import admin
 
 from .views import home_page, about_page, contact_page, login_page, register_page
@@ -25,4 +27,5 @@ urlpatterns = [
     url(r'^login/$', login_page),
     url(r'^registro/$', register_page),
     url(r'^admin/', admin.site.urls),
+    url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout')
 ]
