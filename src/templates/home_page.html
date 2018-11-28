@@ -1,38 +1,160 @@
-<!doctype html>
-    <html lang="pt-br">
-        <head>
-         <!-- Required meta tags -->
-         <meta charset="utf-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>PedeRango</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+      <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   </head>
+   <body>
+      {% if request.user.is_authenticated %}
+      <section class="hero is-danger is-large">
+         <!-- NAVBAR - BEGIN -->
+         <div class="hero-head">
+            <nav class="navbar">
+               <div class="container">
+                  <div class="navbar-brand">
+                     <a href="index.html" class="navbar-item">
+                     <span class="icon is-large">
+                     <i class="fas fa-utensils"></i>
+                     </span>
+                     </a>
+                     <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     </span>
+                  </div>
+                  <div id="navbarMenuHeroB" class="navbar-menu">
+                     <div class="navbar-start">
+                        <a href="index.html" class="navbar-item is-active">
+                        Vendas
+                        </a>
+                        <a href="cadastrar-produtos.html" class="navbar-item">
+                        Produtos
+                        </a>
+                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        Usuarios
+                        </a>
+                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        Fale Conosco
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </nav>
+         </div>
+         <!-- NAVBAR - END -->
+      </section>
+      <div class="tabs is-medium">
+         <ul>
+            <li class="is-active"><a href="index.html">Nova pedido</a></li>
+            <li><a href="consultar-vendas.html">Pedidos realizados</a></li>
+         </ul>
+      </div>
+      <!-- CONTENT - BEGIN -->
+      <div class="container" style="width: 50%">
+         {{ premium_content }}
+         <div class="columns">
+            <div class="column is-full">
+               <form>
+                  <div class="box">
+                     <div class="field">
+                        <label class="label">Usuário</label>
+                        <div class="control has-icons-left has-icons-right">
+                           <input class="input" type="text" placeholder="Digite o ID do usuário" required>
+                           <span class="icon is-small is-left">
+                           <i class="fas fa-user"></i>
+                           </span>
+                        </div>
+                     </div>
+                     <div class="field is-grouped">
+                        <div class="control is-expanded">
+                           <label class="label">Produto</label>
+                           <div class="control has-icons-left">
+                              <div class="select">
+                                 <select style="width: 440px">
+                                    <option>Produto 1</option>
+                                    <option>Produto 2</option>
+                                    <option>Produto 3</option>
+                                 </select>
+                              </div>
+                              <span class="icon is-left">
+                              <i class="fas fa-cart-arrow-down"></i>
+                              </span>
+                           </div>
+                        </div>
+                        <div class="control">
+                           <label class="label">Quantidade</label>
+                           <div class="control has-icons-left has-icons-right">
+                              <input class="input" style="width: 180px;" type="number" min="0" placeholder="Quantidade" required>
+                              <span class="icon is-small is-left">
+                              <i class="fas fa-infinity"></i>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="field is-grouped is-grouped-right">
+                     <div class="control">
+                        <button class="button" type="reset">Limpar</button>
+                     </div>
+                     <div class="control">
+                        <button class="button is-danger">Realizar pedido</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <!-- CONTENT - END -->
+      {% else %}
+      <style type="text/css">
+         body {
+         background: #ff3860;
+         }
+         .centerall {
+         height: 100vh;
+         padding: 0;
+         display: flex;
+         flex-wrap: nowrap;
+         justify-content: center;
+         align-items: center;
+         }
+         .progress::-webkit-progress-value {
+         transition: width 0.5s ease;
+         }
+      </style>
+      <div class="container">
+         <div class="centerall">
+            <div class="box">
+               <p>Você será redirecionado...</p>
+               <progress id="progress-bar" class="progress is-success is-large" value="0" max="100"></progress>
+            </div>
+         </div>
+      </div>
+      <script>
+         var progressArr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Hello, world!</title>
-    </head>
-    <body>
-        <div class='text-center'>
-            <h1>{{ title }}</h1>
-            <h1>Estamos funcionando!</h1>
-        </div>
-    <div class='container'>
-    <div class='row'>
-        <div class = 'col'>
-            <p>{{ content }}</p>
-        </div>
-    </div>
-    {% if request.user.is_authenticated %}
-    <div class='row'>
-        <div class='col'>
-        <h1>Premium</h1>
-            {{ premium_content }}
-        </div>
-    </div>
-    {% endif %}
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-     </body>
-    </html>
+           function fillProgress() {
+             progressArr.forEach(function(num, index) {
+               setTimeout(function() {
+                 $('#progress-bar').val(num);
+               }, 300 * index);
+             });
+           }
+
+           fillProgress();
+
+            function redirect(){
+             window.location.href = "login";
+            }
+
+         setTimeout(redirect, 3000);
+      </script>
+      {% endif %}
+   </body>
+</html>
