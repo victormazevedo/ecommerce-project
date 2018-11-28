@@ -1,4 +1,84 @@
-<form method='POST'> {% csrf_token %}
-    {{ form }}
-    <button type='submit' class='btn btn-default'>Enviar</button>
-  </form>
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>PedeRango - Cadastro</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+      <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+      <style type="text/css">
+         body {
+         background: #ff3860;
+         }
+         .centerall {
+         height: 100vh;
+         padding: 0;
+         display: flex;
+         flex-wrap: nowrap;
+         justify-content: center;
+         align-items: center;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <div class="centerall">
+            <form method='POST'>
+               {% csrf_token %}
+               <div class="box">
+                  <img style="margin-left: 10px" src="https://i.imgur.com/3kk9EQi.png" width="250" height="50"/>
+                  <p style="text-align: center;">Crie sua conta no PedeRango!</p>
+                  <br/>
+                  <div class="field">
+                     <p class="control has-icons-left has-icons-right">
+                        {{ form.username }}
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                        </span>
+                     </p>
+                  </div>
+                  <div class="field">
+                     <p class="control has-icons-left has-icons-right">
+                        {{ form.email }}
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                        </span>
+                     </p>
+                  </div>
+                  <div class="field">
+                     <p class="control has-icons-left">
+                        {{ form.password }}
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                        </span>
+                     </p>
+                  </div>
+                  <div class="field">
+                     <p class="control has-icons-left">
+                        {{ form.password2 }}
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                        </span>
+                     </p>
+                  </div>
+                  <div class="field is-grouped is-grouped-centered">
+                     <div class="control">
+                        <button type='submit' class="button is-danger">Cadastrar</button>
+                     </div>
+                  </div>
+               </div>
+
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+            </form>
+         </div>
+      </div>
+   </body>
+</html>
