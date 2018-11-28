@@ -37,8 +37,18 @@ class ContactForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'input',
+            'placeholder': 'Usuario'
+        }
+    ))
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'input',
+            'placeholder': 'Senha'
+        }
+    ))
 
 
 class RegisterForm(forms.Form):
