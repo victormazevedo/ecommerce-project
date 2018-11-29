@@ -83,14 +83,15 @@ class RegisterForm(forms.Form):
         username = self.cleaned_data.get('username')
         qs = User.objects.filter(username=username)
         if qs.exists():
-            raise forms.ValidationError("O login {username} já esta em uso!")
+            raise forms.ValidationError(f"O login {username} já esta em uso!")
+        return username
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         qs = User.objects.filter(email=email)
         if qs.exists():
-            raise forms.ValidationError("O email {email} já esta em uso!")
-
+            raise forms.ValidationError(f"O email {email} já esta em uso!")
+        return email
     def clean(self):
         data = self.cleaned_data
         password = self.cleaned_data.get('password')
