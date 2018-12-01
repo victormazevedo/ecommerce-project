@@ -22,7 +22,14 @@ from django.contrib.auth.views import logout
 from django.contrib import admin
 
 
-from produtos.views import ProdutoListView, produto_list_view,  ProdutoDetailView, produto_detail_view
+from produtos.views import (
+    ProdutoListView,
+    produto_list_view,
+    ProdutoDetailView,
+    produto_detail_view,
+    ProdutoFeaturedListView,
+    ProdutoFeaturedDetailView
+)
 
 from .views import home_page, about_page, contact_page, login_page, register_page
 
@@ -32,6 +39,8 @@ urlpatterns = [
     url(r'^contato/$', contact_page),  ##the contact changes de url
     url(r'^login/$', login_page),
     url(r'^registro/$', register_page),
+    url(r'^featured/$', ProdutoFeaturedListView.as_view()),
+    url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),
     url(r'^produtos/$', ProdutoListView.as_view()),
     url(r'^produtos-fbv/$', produto_list_view),
     url(r'^produtos/(?P<pk>\d+)/$', ProdutoDetailView.as_view()),
