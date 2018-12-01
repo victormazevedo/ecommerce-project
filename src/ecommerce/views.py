@@ -8,18 +8,18 @@ from .forms import ContactForm, LoginForm, RegisterForm
 
 def home_page(request):
     context = {
-        "title": "Primeira Página!",  ##the name title here is used in home_page
+        "title": "Primeira Página!",  # the name title here is used in home_page
         "content": "Bem-vindo ao PedeRango!",
     }
     if request.user.is_authenticated():
-        context["premium_content"] = "UHU, TÔ LOGADO!"
+        context["premium_content"] = f"Bem vindo {request.user}"
     return render(request, "home_page.html", context)
 
 
 def about_page(request):
     context = {
         "title": "About Page",
-        "content": "Bem-vindo a about page."  ##the name title here is used in home_page
+        "content": "Bem-vindo a about page."  # the name title here is used in home_page
     }
     return render(request, "about.html", context)
 
@@ -30,7 +30,7 @@ def contact_page(request):
     # now we have to add a form to the context
     context = {  # dictionary
         "title": "Contato",
-        "content": "Bem-vindo a página de contato!",  ##the name title here is used in home_page
+        "content": "Bem-vindo a página de contato!",  # the name title here is used in home_page
         "form": contact_form
     }
     if contact_form.is_valid():
