@@ -67,12 +67,13 @@
 
           {% if user.is_superuser %}
               <div style="float: right;">
-                  <button class="button is-link is-small">
+                  <a class="button is-link is-small"
+                     href="http://127.0.0.1:8000/admin/produtos/produto/add/">
                       <span class="icon is-small">
                           <i class="fas fa-plus"></i>
                       </span>
                       <span>Novo produto</span>
-                  </button>
+                  </a>
 
                   <button class="button is-success is-small" name="btnExportJson">
                       <span class="icon is-small">
@@ -83,17 +84,30 @@
               </div>
           {% endif %}
 
-          <br/>
-
-              {{ premium_content }}
-              <div class="columns" style="margin-top: 10px">
-                  {% for obj in object_list %}
-                      <div class="column">
-                          {% include 'produtos/snippets/card.html' with instance=obj %}
-                      </div>
-                  {% endfor %}
+          <div class="field has-addons">
+            <div class="control">
+                <input class="input" type="text" placeholder="Buscar produto">
+            </div>
+              <div class="control">
+                <a class="button is-danger">
+                  Buscar
+                </a>
               </div>
           </div>
+
+          {{ premium_content }}
+
+          <div class="columns" style="margin-top: 10px">
+
+
+
+              {% for obj in object_list %}
+                  <div class="column">
+                      {% include 'produtos/snippets/card.html' with instance=obj %}
+                  </div>
+              {% endfor %}
+          </div>
+      </div>
       {% endblock %}
       <!-- CONTENT - END -->
    </body>

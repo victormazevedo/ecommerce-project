@@ -97,14 +97,16 @@
 
          {% if user.is_superuser %}
           <div style="float: right;">
-              <a class="button is-small is-warning">
+              <a class="button is-small is-warning"
+                 href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/change/">
                   <span class="icon">
                       <i class="fas is-small fa-edit"></i>
                   </span>
                   <span>Editar</span>
               </a>
 
-              <a class="button is-small is-danger" style="margin-left: 10px">
+              <a class="button is-small is-danger"
+                 href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/delete/">
                   <span class="icon">
                       <i class="fas is-small fa-trash"></i>
                   </span>
