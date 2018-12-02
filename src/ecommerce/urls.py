@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^sobre/$', about_page, name='about'),
     url(r'^contato/$', contact_page, name='contact'),
     url(r'^login/$', login_page),
-    url(r'^registro/$', register_page),
+    url(r'^registro/$', register_page, name='register'),
     url(r'^produtos/', include("produtos.urls", namespace='produtos')),
     # url(r'^featured/$', ProdutoFeaturedListView.as_view()),
     # url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),

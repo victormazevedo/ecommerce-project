@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09f9a3ad-e529-4e8a-b560-e0daa92b0efe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ecommerce/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ecommerce/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/produtos/templates/produtos/lista.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/produtos/templates/produtos/lista.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/contact/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/contact/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/auth/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/home_page.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,19 +52,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/lista.html">
+        <entry file="file://$PROJECT_DIR$/src/templates/about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="29" column="63" lean-forward="true" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+            <state relative-caret-position="245">
+              <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/templates/auth/login.html">
+        <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/lista.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="43" />
+            <state relative-caret-position="233">
+              <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -71,16 +73,16 @@
         <entry file="file://$PROJECT_DIR$/src/templates/home_page.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+              <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/templates/contact/view.html">
+        <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+            <state relative-caret-position="306">
+              <caret line="47" column="54" lean-forward="true" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -127,7 +129,6 @@
         <option value="$PROJECT_DIR$/ecommerce/settings.py" />
         <option value="$PROJECT_DIR$/src/ecommerce/views.py" />
         <option value="$PROJECT_DIR$/src/templates/auth/register.html" />
-        <option value="$PROJECT_DIR$/src/templates/auth/login.html" />
         <option value="$PROJECT_DIR$/src/produtos/templates/produtos/list.html" />
         <option value="$PROJECT_DIR$/src/ecommerce/settings.py" />
         <option value="$PROJECT_DIR$/src/ecommerce/settings.py" />
@@ -138,13 +139,14 @@
         <option value="$PROJECT_DIR$/src/ecommerce/forms.py" />
         <option value="$PROJECT_DIR$/src/produtos/templates/produtos/snippets/card.html" />
         <option value="$PROJECT_DIR$/src/produtos/views.py" />
-        <option value="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" />
         <option value="$PROJECT_DIR$/src/produtos/models.py" />
+        <option value="$PROJECT_DIR$/src/templates/contact/view.html" />
         <option value="$PROJECT_DIR$/src/ecommerce/urls.py" />
-        <option value="$PROJECT_DIR$/src/produtos/templates/produtos/lista.html" />
+        <option value="$PROJECT_DIR$/src/templates/auth/login.html" />
         <option value="$PROJECT_DIR$/src/templates/about.html" />
         <option value="$PROJECT_DIR$/src/templates/home_page.html" />
-        <option value="$PROJECT_DIR$/src/templates/contact/view.html" />
+        <option value="$PROJECT_DIR$/src/produtos/templates/produtos/lista.html" />
+        <option value="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" />
       </list>
     </option>
   </component>
@@ -185,6 +187,21 @@
               <item name="ecommerce-project" type="b2602c69:ProjectViewProjectNode" />
               <item name="ecommerce-project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="produtos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ecommerce-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ecommerce-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="produtos" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ecommerce-project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ecommerce-project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="produtos" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="produtos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -288,7 +305,7 @@
       <workItem from="1543586893340" duration="636000" />
       <workItem from="1543617285510" duration="7220000" />
       <workItem from="1543679322677" duration="38473000" />
-      <workItem from="1543764862238" duration="10301000" />
+      <workItem from="1543764862238" duration="10567000" />
     </task>
     <task id="LOCAL-00001" summary="implementação do registro">
       <created>1543241649788</created>
@@ -343,7 +360,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93116000" />
+    <option name="totallyTimeSpent" value="93382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -536,13 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/produtos/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/auth/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -580,30 +590,6 @@
     <entry file="file://$PROJECT_DIR$/src/produtos/migrations/0005_produto_featured.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="33" column="59" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ecommerce/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
-          <folding>
-            <element signature="e#643#675#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/produtos/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -618,38 +604,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/lista.html">
+    <entry file="file://$PROJECT_DIR$/src/produtos/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="29" column="63" lean-forward="true" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+        <state relative-caret-position="51">
+          <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/templates/about.html">
+    <entry file="file://$PROJECT_DIR$/src/ecommerce/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="36" column="52" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        <state relative-caret-position="170">
+          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+          <folding>
+            <element signature="e#643#675#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/auth/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="33" column="43" lean-forward="true" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="154">
+          <caret line="49" column="59" lean-forward="true" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/templates/contact/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/templates/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/templates/home_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+          <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/templates/contact/view.html">
+    <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/lista.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="35" column="30" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+        <state relative-caret-position="233">
+          <caret line="44" column="59" selection-start-line="44" selection-start-column="59" selection-end-line="44" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="47" column="54" lean-forward="true" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
         </state>
       </provider>
     </entry>
