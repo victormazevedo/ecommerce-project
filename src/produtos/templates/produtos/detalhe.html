@@ -67,18 +67,35 @@
       <!-- CONTENT - BEGIN -->
       <div class="container" style="width: 50%">
          {{ premium_content }}
-         <div class="columns">
-            <div class="column is-full">
-                <div class="box">
-                    {{ object.name }} <br/>
-                    {{ object.description }} <br/>
-                    {% if object.image %}
-                        <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" />
-                    {% endif %}
-                R${{ object.price }} <br/>
-                </div>
-            </div>
-         </div>
+
+        <article class="message is-danger">
+          <div class="message-header">
+            <p>{{ object.name }}</p>
+          </div>
+          <div class="message-body">
+
+              <div class="box" style="width: 38%; float: left;">
+                  {% if object.image %}
+                    <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" />
+                  {% endif %}
+
+                  <span class="tag is-success is-large" style="position: absolute; margin-left: 50px;">
+                    R$ {{ object.price }}
+                  </span>
+              </div>
+
+              <div style="width: 60%; float: right;">
+                {{ object.description }}
+
+                  <br/><br/>
+
+                 <a href="{{ object.get_absolute_url }}" class="button is-danger">Bateu a fome!</a>
+              </div>
+
+            <div style="clear: both;"></div>
+          </div>
+        </article>
+
       </div>
       <!-- CONTENT - END -->
    </body>

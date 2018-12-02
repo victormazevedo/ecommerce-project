@@ -60,7 +60,7 @@ class ProdutoDetailSlugView(DetailView):
             qs = Produto.objects.filter(slug=slug, active=True)
             instance = qs.first()
         except:
-            raise Http404("Texte do Joselito")
+            raise Http404("Teste do Joselito")
         return instance
 
 
