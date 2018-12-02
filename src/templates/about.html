@@ -28,10 +28,10 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
-                        <a href="index.html" class="navbar-item is-active">
+                        <a href="{% url 'home' %}" class="navbar-item">
                         Vendas
                         </a>
-                        <a href="cadastrar-produtos.html" class="navbar-item">
+                        <a href="{% url 'produtos:lista' %}" class="navbar-item">
                         Produtos
                         </a>
                         <a href="cadastrar-usuarios.html" class="navbar-item">
@@ -40,7 +40,7 @@
                         <a href="cadastrar-usuarios.html" class="navbar-item">
                         Fale Conosco
                         </a>
-                         <a href="/sobre" class="navbar-item">
+                         <a href="{% url 'about' %}" class="navbar-item is-active">
                         Sobre
                         </a>
                      </div>

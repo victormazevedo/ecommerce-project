@@ -36,7 +36,7 @@
                         <a href="cadastrar-usuarios.html" class="navbar-item">
                         Fale Conosco
                         </a>
-                         <a href="/sobre" class="navbar-item">
+                         <a href="{% url 'about' %}" class="navbar-item">
                         Sobre
                         </a>
                      </div>
@@ -60,13 +60,25 @@
          <!-- NAVBAR - END -->
       </section>
 
-      <br/><br/>
+      <br/>
 
       <!-- CONTENT - BEGIN -->
       {% block content %}
           <div class='container' style="width: 60%">
-          {{ premium_content }}
-              <div class="columns">
+
+              <div style="float: right;">
+                  <button class="button is-success is-small" name="btnExportJson">
+                      <span class="icon is-small">
+                          <i class="fas fa-file-export"></i>
+                      </span>
+                      <span>Exportar</span>
+                  </button>
+              </div>
+
+          <br/>
+
+              {{ premium_content }}
+              <div class="columns" style="margin-top: 10px">
                   {% for obj in object_list %}
                       <div class="column">
                           {% include 'produtos/snippets/card.html' with instance=obj %}
