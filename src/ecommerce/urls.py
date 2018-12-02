@@ -35,12 +35,12 @@ from django.contrib import admin
 from .views import home_page, about_page, contact_page, login_page, register_page
 
 urlpatterns = [
-    url(r'^$', home_page),
+    url(r'^$', home_page, name='home'),
     url(r'^sobre/$', about_page),
     url(r'^contato/$', contact_page),
     url(r'^login/$', login_page),
     url(r'^registro/$', register_page),
-    url(r'^produtos/', include("produtos.urls")),
+    url(r'^produtos/', include("produtos.urls", namespace='produtos')),
     # url(r'^featured/$', ProdutoFeaturedListView.as_view()),
     # url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),
     # url(r'^produtos/$', ProdutoListView.as_view()),

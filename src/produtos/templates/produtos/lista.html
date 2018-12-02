@@ -1,5 +1,84 @@
-{% for obj in object_list %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>PedeRango</title>
+       <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+      <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+   </head>
+   <body>
+      <section class="hero is-danger is-large">
+         <!-- NAVBAR - BEGIN -->
+         <div class="hero-head">
+            <nav class="navbar">
+               <div class="container">
+                  <div class="navbar-brand">
+                     <a href="index.html" class="navbar-item">
+                     <span class="icon is-large">
+                     <i class="fas fa-utensils"></i>
+                     </span>
+                     </a>
+                     <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     </span>
+                  </div>
+                  <div id="navbarMenuHeroB" class="navbar-menu">
+                     <div class="navbar-start">
+                        <a href="{% url 'home' %}" class="navbar-item">
+                        Vendas
+                        </a>
+                        <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
+                        Produtos
+                        </a>
+                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        Usuarios
+                        </a>
+                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        Fale Conosco
+                        </a>
+                         <a href="/sobre" class="navbar-item">
+                        Sobre
+                        </a>
+                     </div>
 
-<a href="{{ obj.get_absolute_url }}"> {{ obj.name }} </a><br/>
-
-{% endfor %}
+                      <div class="navbar-end">
+                        <span class="navbar-item">
+                            <span class="tag is-white">Olá {{ user.get_username }}</span>
+                            <span class="tag is-black" style="margin-left: 10px;">
+                                <a href="/logout"><span>Sair</span>
+                                    <span class="icon">
+                                        <i class="fas is-small fa-sign-out-alt"></i>
+                                    </span>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                  </div>
+               </div>
+            </nav>
+         </div>
+         <!-- NAVBAR - END -->
+      </section>
+      <br/><br/>
+      <!-- CONTENT - BEGIN -->
+      {% block content %}
+          <div class='container'>
+          {{ premium_content }}
+              <div class='row'>
+                  {% for obj in object_list %}
+                      <div class='col'>
+                          {% include 'produtos/snippets/card.html' with instance=obj %}
+                      </div>
+                  {% endfor %}
+              </div>
+          </div>
+      {% endblock %}
+      <!-- CONTENT - END -->
+   </body>
+</html>

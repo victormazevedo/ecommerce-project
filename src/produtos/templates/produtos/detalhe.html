@@ -1,5 +1,85 @@
-{{ object.name }} <br/>
-{{ object.description }} <br/>
-{% if object.image %}
-    <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" />
-{% endif %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>PedeRango</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+      <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+   </head>
+   <body>
+      <section class="hero is-danger is-large">
+         <!-- NAVBAR - BEGIN -->
+         <div class="hero-head">
+            <nav class="navbar">
+               <div class="container">
+                  <div class="navbar-brand">
+                     <a href="index.html" class="navbar-item">
+                     <span class="icon is-large">
+                     <i class="fas fa-utensils"></i>
+                     </span>
+                     </a>
+                     <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+                     <span></span>
+                     <span></span>
+                     <span></span>
+                     </span>
+                  </div>
+                  <div id="navbarMenuHeroB" class="navbar-menu">
+                     <div class="navbar-start">
+                        <a href="{% url 'home' %}" class="navbar-item">
+                        Vendas
+                        </a>
+                        <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
+                        Produtos
+                        </a>
+                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        Usuarios
+                        </a>
+                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        Fale Conosco
+                        </a>
+                         <a href="/sobre" class="navbar-item">
+                        Sobre
+                        </a>
+                     </div>
+
+                      <div class="navbar-end">
+                        <span class="navbar-item">
+                            <span class="tag is-white">Olá {{ user.get_username }}</span>
+                            <span class="tag is-black" style="margin-left: 10px;">
+                                <a href="/logout"><span>Sair</span>
+                                    <span class="icon">
+                                        <i class="fas is-small fa-sign-out-alt"></i>
+                                    </span>
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                  </div>
+               </div>
+            </nav>
+         </div>
+         <!-- NAVBAR - END -->
+      </section>
+      <br/><br/>
+      <!-- CONTENT - BEGIN -->
+      <div class="container" style="width: 50%">
+         {{ premium_content }}
+         <div class="columns">
+            <div class="column is-full">
+                <div class="box">
+                    {{ object.name }} <br/>
+                    {{ object.description }} <br/>
+                    {% if object.image %}
+                        <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" />
+                    {% endif %}
+                R${{ object.price }} <br/>
+                </div>
+            </div>
+         </div>
+      </div>
+      <!-- CONTENT - END -->
+   </body>
+</html>
