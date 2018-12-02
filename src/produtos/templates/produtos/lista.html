@@ -4,8 +4,6 @@
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>PedeRango</title>
-       <!-- Bootstrap CSS -->
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -15,18 +13,14 @@
          <!-- NAVBAR - BEGIN -->
          <div class="hero-head">
             <nav class="navbar">
-               <div class="container">
+               <div class="container" style="height: px">
                   <div class="navbar-brand">
-                     <a href="index.html" class="navbar-item">
+                     <a href="{% url 'home' %}" class="navbar-item">
                      <span class="icon is-large">
                      <i class="fas fa-utensils"></i>
                      </span>
                      </a>
-                     <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                     <span></span>
-                     <span></span>
-                     <span></span>
-                     </span>
+                     <span class="navbar-burger burger" data-target="navbarMenuHeroB"></span>
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
@@ -65,14 +59,16 @@
          </div>
          <!-- NAVBAR - END -->
       </section>
+
       <br/><br/>
+
       <!-- CONTENT - BEGIN -->
       {% block content %}
-          <div class='container'>
+          <div class='container' style="width: 60%">
           {{ premium_content }}
-              <div class='row'>
+              <div class="columns">
                   {% for obj in object_list %}
-                      <div class='col'>
+                      <div class="column">
                           {% include 'produtos/snippets/card.html' with instance=obj %}
                       </div>
                   {% endfor %}
