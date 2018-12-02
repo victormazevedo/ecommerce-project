@@ -56,6 +56,9 @@ class Produto(models.Model):
 
     objects = ProdutoManager()
 
+    def get_absolute_url(self):
+        return "/produtos/{slug}/".format(slug=self.slug)
+
     def __str__(self):
         return self.name
 
