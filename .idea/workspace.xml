@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09f9a3ad-e529-4e8a-b560-e0daa92b0efe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ecommerce.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/produtos/templates/produtos/snippets/card.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/produtos/templates/produtos/snippets/card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/produtos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/produtos/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/about.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +46,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="471">
@@ -62,6 +58,15 @@
                 <element signature="n#style#0;n#div#1;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/templates/about.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -117,7 +122,6 @@
         <option value="$PROJECT_DIR$/src/produtos/utils.py" />
         <option value="$PROJECT_DIR$/src/produtos/urls.py" />
         <option value="$PROJECT_DIR$/src/produtos/models.py" />
-        <option value="$PROJECT_DIR$/src/templates/about.html" />
         <option value="$PROJECT_DIR$/src/ecommerce/urls.py" />
         <option value="$PROJECT_DIR$/src/ecommerce/forms.py" />
         <option value="$PROJECT_DIR$/src/templates/contact/view.html" />
@@ -126,6 +130,7 @@
         <option value="$PROJECT_DIR$/src/produtos/templates/produtos/snippets/card.html" />
         <option value="$PROJECT_DIR$/src/produtos/views.py" />
         <option value="$PROJECT_DIR$/src/produtos/templates/produtos/detalhe.html" />
+        <option value="$PROJECT_DIR$/src/templates/about.html" />
       </list>
     </option>
   </component>
@@ -293,7 +298,7 @@
       <workItem from="1543586893340" duration="636000" />
       <workItem from="1543617285510" duration="7220000" />
       <workItem from="1543679322677" duration="38473000" />
-      <workItem from="1543764862238" duration="6209000" />
+      <workItem from="1543764862238" duration="6971000" />
     </task>
     <task id="LOCAL-00001" summary="implementação do registro">
       <created>1543241649788</created>
@@ -348,7 +353,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89024000" />
+    <option name="totallyTimeSpent" value="89786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -541,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/templates/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/produtos/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -661,6 +659,13 @@
             <element signature="n#style#0;n#div#1;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#article#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/templates/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
         </state>
       </provider>
     </entry>
