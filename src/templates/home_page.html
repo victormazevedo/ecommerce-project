@@ -13,13 +13,22 @@
    </head>
    <body>
       {% if request.user.is_authenticated %}
+
+      {% if not user.is_superuser %}
+          <script>
+              window.onload = function() {
+                  window.location.href = "produtos";
+              }
+          </script>
+      {% endif %}
+
       <section class="hero is-danger is-large">
          <!-- NAVBAR - BEGIN -->
          <div class="hero-head">
             <nav class="navbar">
                <div class="container">
                   <div class="navbar-brand">
-                     <a href="index.html" class="navbar-item">
+                     <a href="{% url 'home' %}" class="navbar-item">
                      <span class="icon is-large">
                      <i class="fas fa-utensils"></i>
                      </span>
@@ -29,9 +38,11 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
-                        <a href="{% url 'home' %}" class="navbar-item is-active">
-                        Vendas
+                        {% if user.is_superuser %}
+                        <a href="{% url 'home' %}" class="navbar-item">
+                        Pedidos
                         </a>
+                        {% endif %}
                         <a href="{% url 'produtos:lista' %}" class="navbar-item">
                         Produtos
                         </a>
@@ -61,53 +72,17 @@
          </div>
          <!-- NAVBAR - END -->
       </section>
-      <div class="tabs is-medium">
-         <ul>
-            <li class="is-active"><a href="index.html">Nova pedido</a></li>
-            <li><a href="consultar-vendas.html">Pedidos realizados</a></li>
-         </ul>
-      </div>
+     <br/><br/>
       <!-- CONTENT - BEGIN -->
       <div class="container" style="width: 50%">
-         {{ premium_content }}
+
          <div class="columns">
             <div class="column is-full">
                <form>
                   <div class="box">
-                     <div class="field is-grouped">
-                        <div class="control is-expanded">
-                            <label class="label">Produto</label>
-                            <div class="control ">
-                                <select id="select-produtos"
-                                        style="width: 100%;"
-                                        placeholder="Selecione um produto">
-                                    <option value="">Selecione um produto</option>
-                                    <option value="1">Produto 1</option>
-                                    <option value="2">Produto 2</option>
-                                    <option value="3">Produto 3</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="control">
-                            <label class="label">Quantidade</label>
-
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input" style="width: 180px;" type="number" min="0" placeholder="Quantidade" required>
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-infinity"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="field is-grouped is-grouped-right">
-                     <div class="control">
-                        <button class="button" type="reset">Limpar</button>
-                     </div>
-                     <div class="control">
-                        <button class="button is-danger">Realizar pedido</button>
-                     </div>
+                     {{ premium_content }}
+                      <br/>
+                     Lista de pedidos realizados
                   </div>
                </form>
             </div>
@@ -122,49 +97,49 @@
       </div>
       <!-- CONTENT - END -->
       {% else %}
-      <style type="text/css">
-         body {
-         background: #ff3860;
-         }
-         .centerall {
-         height: 100vh;
-         padding: 0;
-         display: flex;
-         flex-wrap: nowrap;
-         justify-content: center;
-         align-items: center;
-         }
-         .progress::-webkit-progress-value {
-         transition: width 0.5s ease;
-         }
-      </style>
-      <div class="container">
-         <div class="centerall">
-            <div class="box">
-               <p>Você será redirecionado...</p>
-               <progress id="progress-bar" class="progress is-success is-large" value="0" max="100"></progress>
-            </div>
-         </div>
-      </div>
-      <script>
-         var progressArr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+          <style type="text/css">
+             body {
+             background: #ff3860;
+             }
+             .centerall {
+             height: 100vh;
+             padding: 0;
+             display: flex;
+             flex-wrap: nowrap;
+             justify-content: center;
+             align-items: center;
+             }
+             .progress::-webkit-progress-value {
+             transition: width 0.5s ease;
+             }
+          </style>
+          <div class="container">
+             <div class="centerall">
+                <div class="box">
+                   <p>Você será redirecionado...</p>
+                   <progress id="progress-bar" class="progress is-success is-large" value="0" max="100"></progress>
+                </div>
+             </div>
+          </div>
+          <script>
+             var progressArr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
-           function fillProgress() {
-             progressArr.forEach(function(num, index) {
-               setTimeout(function() {
-                 $('#progress-bar').val(num);
-               }, 300 * index);
-             });
-           }
+               function fillProgress() {
+                 progressArr.forEach(function(num, index) {
+                   setTimeout(function() {
+                     $('#progress-bar').val(num);
+                   }, 300 * index);
+                 });
+               }
 
-           fillProgress();
+               fillProgress();
 
-            function redirect(){
-             window.location.href = "login";
-            }
+                function redirect(){
+                 window.location.href = "login";
+                }
 
-         setTimeout(redirect, 3000);
-      </script>
+                setTimeout(redirect, 3000);
+          </script>
       {% endif %}
    </body>
 </html>

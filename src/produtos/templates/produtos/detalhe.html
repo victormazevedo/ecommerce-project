@@ -28,9 +28,11 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
+                        {% if user.is_superuser %}
                         <a href="{% url 'home' %}" class="navbar-item">
-                        Vendas
+                        Pedidos
                         </a>
+                        {% endif %}
                         <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
                         Produtos
                         </a>

@@ -24,9 +24,11 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
+                        {% if user.is_superuser %}
                         <a href="{% url 'home' %}" class="navbar-item">
-                        Vendas
+                        Pedidos
                         </a>
+                        {% endif %}
                         <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
                         Produtos
                         </a>
@@ -63,7 +65,15 @@
       {% block content %}
           <div class='container' style="width: 60%">
 
+          {% if user.is_superuser %}
               <div style="float: right;">
+                  <button class="button is-link is-small">
+                      <span class="icon is-small">
+                          <i class="fas fa-plus"></i>
+                      </span>
+                      <span>Novo produto</span>
+                  </button>
+
                   <button class="button is-success is-small" name="btnExportJson">
                       <span class="icon is-small">
                           <i class="fas fa-file-export"></i>
@@ -71,6 +81,7 @@
                       <span>Exportar</span>
                   </button>
               </div>
+          {% endif %}
 
           <br/>
 
