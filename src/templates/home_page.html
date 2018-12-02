@@ -29,19 +29,16 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
-                        <a href="index.html" class="navbar-item is-active">
+                        <a href="{% url 'home' %}" class="navbar-item is-active">
                         Vendas
                         </a>
                         <a href="{% url 'produtos:lista' %}" class="navbar-item">
                         Produtos
                         </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
-                        Usuarios
-                        </a>
-                        <a href="contato" class="navbar-item">
+                        <a href="{% url 'contact' %}" class="navbar-item">
                         Fale Conosco
                         </a>
-                         <a href="/sobre" class="navbar-item">
+                         <a href="{% url 'about' %}" class="navbar-item">
                         Sobre
                         </a>
                      </div>

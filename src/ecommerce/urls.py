@@ -37,7 +37,7 @@ from .views import home_page, about_page, contact_page, login_page, register_pag
 urlpatterns = [
     url(r'^$', home_page, name='home'),
     url(r'^sobre/$', about_page, name='about'),
-    url(r'^contato/$', contact_page),
+    url(r'^contato/$', contact_page, name='contact'),
     url(r'^login/$', login_page),
     url(r'^registro/$', register_page),
     url(r'^produtos/', include("produtos.urls", namespace='produtos')),
