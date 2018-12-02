@@ -26,6 +26,7 @@ from produtos.views import (
     ProdutoListView,
     produto_list_view,
     ProdutoDetailView,
+    ProdutoDetailSlugView,
     produto_detail_view,
     ProdutoFeaturedListView,
     ProdutoFeaturedDetailView
@@ -43,7 +44,8 @@ urlpatterns = [
     url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),
     url(r'^produtos/$', ProdutoListView.as_view()),
     url(r'^produtos-fbv/$', produto_list_view),
-    url(r'^produtos/(?P<pk>\d+)/$', ProdutoDetailView.as_view()),
+    # url(r'^produtos/(?P<pk>\d+)/$', ProdutoDetailView.as_view()),
+    url(r'^produtos/(?P<slug>[\w-]+)/$', ProdutoDetailSlugView.as_view()),
     url(r'^produtos-fbv/(?P<pk>\d+)/$', produto_detail_view),
     url(r'^admin/', admin.site.urls),
     url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout')

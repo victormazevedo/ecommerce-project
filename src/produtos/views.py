@@ -2,7 +2,6 @@ from django.http import Http404
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 
-
 from .models import Produto
 
 
@@ -42,6 +41,27 @@ def produto_list_view(request):
         'object_list': queryset
     }
     return render(request, "produtos/lista.html", context)
+
+
+class ProdutoDetailSlugView(DetailView):
+    queryset = Produto.objects.all()
+    template_name = "produtos/detalhe.html"
+
+    def get_object(self, *args, **kwargs):
+        request = self.request
+        slug = self.kwargs.get('slug')
+        # instance = get_object_or_404(Produto, slug=slug, active=True)
+        # aqui estamos definindo caso retorne multiplos objetos, pegamos o primeiro
+        try:
+            instance = Produto.objects.get(slug=slug, active=True)
+        except Produto.DoesNotExist:
+            raise Http404("Produto não encontado!")
+        except Produto.MultipleObjectsReturned:
+            qs = Produto.objects.filter(slug=slug, active=True)
+            instance = qs.first()
+        except:
+            raise Http404("Texte do Joselito")
+        return instance
 
 
 class ProdutoDetailView(DetailView):

@@ -1,8 +1,10 @@
-#  classe usada para mapear o banco de dados, no caso está sendo utilizado o sqlite, integrado ao django
+#  classe usada para mapear o banco de dados ORM, no caso está sendo utilizado o sqlite, integrado ao django
 #  versão do Django 1.11
 import random
 import os
 from django.db import models
+from django.db.models.signals import pre_save, post_save
+from .utils import unique_slug_generator
 
 
 def get_filename_extension(filename):  # usado para pegar a extensão da img que foi upada
@@ -45,6 +47,7 @@ class ProdutoManager(models.Manager):
 
 class Produto(models.Model):
     name = models.CharField(max_length=120)
+    slug = models.SlugField(blank=True, unique=True)  # usado para passar o nome do produto na url
     description = models.TextField()
     price = models.DecimalField(decimal_places=2, max_digits=10, default=19.99)
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
@@ -58,3 +61,13 @@ class Produto(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+# antes do produto ser salvo, é feito o slug no produto a ser inserido
+
+def produto_pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+
+
+pre_save.connect(produto_pre_save_receiver, sender=Produto)
