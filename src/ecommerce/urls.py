@@ -37,10 +37,11 @@ from .views import home_page, about_page, contact_page, login_page, register_pag
 urlpatterns = [
     url(r'^$', home_page, name='home'),
     url(r'^sobre/$', about_page, name='about'),
-    url(r'^contato/$', contact_page),
+    url(r'^contato/$', contact_page, name='contact'),
     url(r'^login/$', login_page),
-    url(r'^registro/$', register_page),
+    url(r'^registro/$', register_page, name='register'),
     url(r'^produtos/', include("produtos.urls", namespace='produtos')),
+    url(r'^pesquisa/', include("pesquisa.urls", namespace='pesquisa')),
     # url(r'^featured/$', ProdutoFeaturedListView.as_view()),
     # url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),
     # url(r'^produtos/$', ProdutoListView.as_view()),

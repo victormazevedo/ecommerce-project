@@ -15,29 +15,25 @@
             <nav class="navbar">
                <div class="container">
                   <div class="navbar-brand">
-                     <a href="index.html" class="navbar-item">
+                     <a href="{% url 'home' %}" class="navbar-item">
                      <span class="icon is-large">
                      <i class="fas fa-utensils"></i>
                      </span>
                      </a>
                      <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                     <span></span>
-                     <span></span>
-                     <span></span>
                      </span>
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
+                        {% if user.is_superuser %}
                         <a href="{% url 'home' %}" class="navbar-item">
-                        Vendas
+                        Pedidos
                         </a>
+                        {% endif %}
                         <a href="{% url 'produtos:lista' %}" class="navbar-item">
                         Produtos
                         </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
-                        Usuarios
-                        </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        <a href="{% url 'contact' %}" class="navbar-item">
                         Fale Conosco
                         </a>
                          <a href="{% url 'about' %}" class="navbar-item is-active">
@@ -49,7 +45,7 @@
                         <span class="navbar-item">
                             <span class="tag is-white">Olá {{ user.get_username }}</span>
                             <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="/logout"><span>Sair</span>
+                                <a href="{% url 'logout' %}"><span>Sair</span>
                                     <span class="icon">
                                         <i class="fas is-small fa-sign-out-alt"></i>
                                     </span>

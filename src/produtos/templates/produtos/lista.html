@@ -13,7 +13,7 @@
          <!-- NAVBAR - BEGIN -->
          <div class="hero-head">
             <nav class="navbar">
-               <div class="container" style="height: px">
+               <div class="container">
                   <div class="navbar-brand">
                      <a href="{% url 'home' %}" class="navbar-item">
                      <span class="icon is-large">
@@ -24,16 +24,15 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
+                        {% if user.is_superuser %}
                         <a href="{% url 'home' %}" class="navbar-item">
-                        Vendas
+                        Pedidos
                         </a>
+                        {% endif %}
                         <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
                         Produtos
                         </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
-                        Usuarios
-                        </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        <a href="{% url 'contact' %}" class="navbar-item">
                         Fale Conosco
                         </a>
                          <a href="{% url 'about' %}" class="navbar-item">
@@ -45,7 +44,7 @@
                         <span class="navbar-item">
                             <span class="tag is-white">Olá {{ user.get_username }}</span>
                             <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="/logout"><span>Sair</span>
+                                <a href="{% url 'logout' %}"><span>Sair</span>
                                     <span class="icon">
                                         <i class="fas is-small fa-sign-out-alt"></i>
                                     </span>
@@ -66,7 +65,16 @@
       {% block content %}
           <div class='container' style="width: 60%">
 
+          {% if user.is_superuser %}
               <div style="float: right;">
+                  <a class="button is-link is-small"
+                     href="http://127.0.0.1:8000/admin/produtos/produto/add/">
+                      <span class="icon is-small">
+                          <i class="fas fa-plus"></i>
+                      </span>
+                      <span>Novo produto</span>
+                  </a>
+
                   <button class="button is-success is-small" name="btnExportJson">
                       <span class="icon is-small">
                           <i class="fas fa-file-export"></i>
@@ -74,18 +82,32 @@
                       <span>Exportar</span>
                   </button>
               </div>
+          {% endif %}
 
-          <br/>
-
-              {{ premium_content }}
-              <div class="columns" style="margin-top: 10px">
-                  {% for obj in object_list %}
-                      <div class="column">
-                          {% include 'produtos/snippets/card.html' with instance=obj %}
-                      </div>
-                  {% endfor %}
+          <form method="GET" action="{% url "pesquisa:query" %}">
+              <div class="field has-addons">
+                <div class="control">
+                    <input class="input" type="text" placeholder="Buscar produto" name="q">
+                </div>
+                  <div class="control">
+                    <button type="submit"
+                            class="button is-danger">
+                      Buscar
+                    </button>
+                  </div>
               </div>
+          </form>
+
+          {{ premium_content }}
+
+          <div class="columns" style="margin-top: 10px">
+              {% for obj in object_list %}
+                  <div class="column is-one-third">
+                      {% include 'produtos/snippets/card.html' with instance=obj %}
+                  </div>
+              {% endfor %}
           </div>
+      </div>
       {% endblock %}
       <!-- CONTENT - END -->
    </body>
