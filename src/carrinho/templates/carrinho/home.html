@@ -4,6 +4,7 @@
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>PedeRango</title>
+       <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
       <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -13,18 +14,14 @@
          <!-- NAVBAR - BEGIN -->
          <div class="hero-head">
             <nav class="navbar">
-               <div class="container">
+               <div class="container" style="height: px">
                   <div class="navbar-brand">
-                     <a href="index.html" class="navbar-item">
+                     <a href="{% url 'home' %}" class="navbar-item">
                      <span class="icon is-large">
                      <i class="fas fa-utensils"></i>
                      </span>
                      </a>
-                     <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                     <span></span>
-                     <span></span>
-                     <span></span>
-                     </span>
+                     <span class="navbar-burger burger" data-target="navbarMenuHeroB"></span>
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
@@ -42,6 +39,9 @@
                         </a>
                          <a href="/sobre" class="navbar-item">
                         Sobre
+                        </a>
+                         <a href="{% url 'carrinho:home' %}" class="navbar-item">
+                        {{ request.session.total_itens }} <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </a>
                      </div>
 
@@ -63,39 +63,48 @@
          </div>
          <!-- NAVBAR - END -->
       </section>
+
       <br/><br/>
+
       <!-- CONTENT - BEGIN -->
-      <div class="container" style="width: 50%">
-         {{ premium_content }}
+      {% block content %}
+        <h1>Carrinho</h1>
 
-        <article class="message is-danger">
-          <div class="message-header">
-            <p>{{ object.name }}</p>
-          </div>
-          <div class="message-body">
-
-              <div class="box" style="width: 38%; float: left;">
-                  {% if object.image %}
-                    <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" />
-                  {% endif %}
-
-                  <span class="tag is-success is-large" style="position: absolute; margin-left: 50px;">
-                    R$ {{ object.price }}
-                  </span>
-              </div>
-
-              <div style="width: 60%; float: right;">
-                {{ object.description }}
-
-                  <br/><br/>
-                  {% include 'produtos/snippets/atualizar-carrinho.html' with produto=object carrinho=carrinho %}
-              </div>
-
-            <div style="clear: both;"></div>
-          </div>
-        </article>
-
-      </div>
+            {% if carrinho.produtos.exists  %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nome do Produto</th>
+                      <th scope="col">Preço</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for produto in carrinho.produtos.all %}
+                    <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td><a href="{{ produto.get_absolute_url }}" >{{ produto.name }}</a>
+                        {% include 'produtos/snippets/atualizar-carrinho.html' with produto=produto carrinho=carrinho no_carrinho=True %}
+                      </td>
+                      <td>{{ produto.price }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                      <td colspan="2"></td>
+                      <td><b>Sub-total </b>{{ carrinho.subtotal }}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td><b>Total </b>{{ carrinho.total }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            {% else %}
+                <p class="lead">Carrinho vazio!</p>
+            {% endif %}
+    {% endblock %}
       <!-- CONTENT - END -->
    </body>
 </html>
+
+

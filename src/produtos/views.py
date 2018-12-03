@@ -2,6 +2,7 @@ from django.http import Http404
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 
+from carrinho.models import Carrinho
 from .models import Produto
 
 
@@ -46,6 +47,12 @@ def produto_list_view(request):
 class ProdutoDetailSlugView(DetailView):
     queryset = Produto.objects.all()
     template_name = "produtos/detalhe.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProdutoDetailSlugView, self).get_context_data(*args, **kwargs)
+        carrinho_obj, new_obj = Carrinho.objects.new_or_get(self.request)
+        context['carrinho'] = carrinho_obj
+        return context
 
     def get_object(self, *args, **kwargs):
         request = self.request
