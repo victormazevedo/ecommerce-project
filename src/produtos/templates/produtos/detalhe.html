@@ -28,19 +28,18 @@
                   </div>
                   <div id="navbarMenuHeroB" class="navbar-menu">
                      <div class="navbar-start">
+                        {% if user.is_superuser %}
                         <a href="{% url 'home' %}" class="navbar-item">
-                        Vendas
+                        Pedidos
                         </a>
+                        {% endif %}
                         <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
                         Produtos
                         </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
-                        Usuarios
-                        </a>
-                        <a href="cadastrar-usuarios.html" class="navbar-item">
+                        <a href="{% url 'contact' %}" class="navbar-item">
                         Fale Conosco
                         </a>
-                         <a href="/sobre" class="navbar-item">
+                         <a href="{% url 'about' %}" class="navbar-item">
                         Sobre
                         </a>
                      </div>
@@ -49,7 +48,7 @@
                         <span class="navbar-item">
                             <span class="tag is-white">Olá {{ user.get_username }}</span>
                             <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="/logout"><span>Sair</span>
+                                <a href="{% url 'logout' %}"><span>Sair</span>
                                     <span class="icon">
                                         <i class="fas is-small fa-sign-out-alt"></i>
                                     </span>
@@ -63,7 +62,7 @@
          </div>
          <!-- NAVBAR - END -->
       </section>
-      <br/><br/>
+      <br/>
       <!-- CONTENT - BEGIN -->
       <div class="container" style="width: 50%">
          {{ premium_content }}
@@ -94,6 +93,26 @@
             <div style="clear: both;"></div>
           </div>
         </article>
+
+         {% if user.is_superuser %}
+          <div style="float: right;">
+              <a class="button is-small is-warning"
+                 href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/change/">
+                  <span class="icon">
+                      <i class="fas is-small fa-edit"></i>
+                  </span>
+                  <span>Editar</span>
+              </a>
+
+              <a class="button is-small is-danger"
+                 href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/delete/">
+                  <span class="icon">
+                      <i class="fas is-small fa-trash"></i>
+                  </span>
+                  <span>Excluir</span>
+              </a>
+          </div>
+        {% endif %}
 
       </div>
       <!-- CONTENT - END -->

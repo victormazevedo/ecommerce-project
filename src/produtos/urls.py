@@ -2,8 +2,7 @@ from django.conf.urls import url
 
 from .views import (
     ProdutoListView,
-    ProdutoDetailSlugView,
-)
+    ProdutoDetailSlugView)
 
 urlpatterns = [
     url(r'^$', ProdutoListView.as_view(), name='lista'),
