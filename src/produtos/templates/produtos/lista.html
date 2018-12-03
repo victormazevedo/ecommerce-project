@@ -13,7 +13,7 @@
          <!-- NAVBAR - BEGIN -->
          <div class="hero-head">
             <nav class="navbar">
-               <div class="container" style="height: px">
+               <div class="container">
                   <div class="navbar-brand">
                      <a href="{% url 'home' %}" class="navbar-item">
                      <span class="icon is-large">
@@ -84,25 +84,25 @@
               </div>
           {% endif %}
 
-          <div class="field has-addons">
-            <div class="control">
-                <input class="input" type="text" placeholder="Buscar produto">
-            </div>
-              <div class="control">
-                <a class="button is-danger">
-                  Buscar
-                </a>
+          <form method="GET" action="{% url "pesquisa:query" %}">
+              <div class="field has-addons">
+                <div class="control">
+                    <input class="input" type="text" placeholder="Buscar produto" name="q">
+                </div>
+                  <div class="control">
+                    <button type="submit"
+                            class="button is-danger">
+                      Buscar
+                    </button>
+                  </div>
               </div>
-          </div>
+          </form>
 
           {{ premium_content }}
 
           <div class="columns" style="margin-top: 10px">
-
-
-
               {% for obj in object_list %}
-                  <div class="column">
+                  <div class="column is-one-third">
                       {% include 'produtos/snippets/card.html' with instance=obj %}
                   </div>
               {% endfor %}

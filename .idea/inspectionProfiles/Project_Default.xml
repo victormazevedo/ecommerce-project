@@ -15,6 +15,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="src.ecommerce.urls.produtos" />
+          <option value="src.pesquisa.urls.ProdutoListView" />
         </list>
       </option>
     </inspection_tool>

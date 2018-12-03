@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^login/$', login_page),
     url(r'^registro/$', register_page, name='register'),
     url(r'^produtos/', include("produtos.urls", namespace='produtos')),
+    url(r'^pesquisa/', include("pesquisa.urls", namespace='pesquisa')),
     # url(r'^featured/$', ProdutoFeaturedListView.as_view()),
     # url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),
     # url(r'^produtos/$', ProdutoListView.as_view()),
