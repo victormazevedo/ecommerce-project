@@ -1,28 +1,27 @@
-{% extends "base.html" %}
-
-{% block content %}
-{{ premium_content }}
+{% extends "base.html" %} {% block content %} {{ premium_content }}
 
 <article class="message is-danger">
     <div class="message-header">
         <p>{{ object.name }}</p>
     </div>
     <div class="message-body">
-
-        <div class="box" style="width: 38%; float: left;">
-            {% if object.image %}
-            <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" /> {% endif %}
-
-            <span class="tag is-success is-large" style="position: absolute; margin-left: 50px;">
+        <div class="columns">
+            <div class="column is-one-third">
+                <div class="box has-text-centered">
+                    {% if object.image %}
+                    <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" /> {% endif %}
+                    <br/>
+                    <span class="tag is-success is-large">
             R$ {{ object.price }}
           </span>
-        </div>
+                </div>
+            </div>
+            <div class="column">
+                {{ object.description }}
 
-        <div style="width: 60%; float: right;">
-            {{ object.description }}
-
-            <br/>
-            <br/> {% include 'produtos/snippets/atualizar-carrinho.html' with produto=object carrinho=carrinho %}
+                <br/>
+                <br/> {% include 'produtos/snippets/atualizar-carrinho.html' with produto=object carrinho=carrinho %}
+            </div>
         </div>
 
         <div style="clear: both;"></div>

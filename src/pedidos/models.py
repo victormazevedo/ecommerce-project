@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 
@@ -10,6 +11,7 @@ STATUS_PEDIDO = (
     ('preparo', 'Em preparo'),
     ('entrega', 'Saiu para entrega'),
 )
+
 
 class Pedido(models.Model):
     id_pedido = models.CharField(max_length=120, blank=True)
@@ -24,7 +26,7 @@ class Pedido(models.Model):
     def update_total(self):
         total_carrinho = self.carrinho.total
         valor_entrega = self.valor_entrega
-        novo_total = total_carrinho + valor_entrega
+        novo_total = Decimal(total_carrinho) + Decimal(valor_entrega)
         self.total = novo_total
         self.save()
         return novo_total
@@ -48,11 +50,13 @@ def post_save_total_carrinho(sender, instance, created, *args, **kwargs):
             pedido_obj = qs.first()
             pedido_obj.update_total()
 
+
 post_save.connect(post_save_total_carrinho, sender=Carrinho)
 
 
 def post_save_pedido(sender, instance, created, *args, **kwargs):
     if created:
         instance.update_total()
+
 
 post_save.connect(post_save_pedido, sender=Pedido)
