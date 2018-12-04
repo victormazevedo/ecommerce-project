@@ -1,11 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Checkout</h1>
 
-<p>Total carrinho: {{ object.carrinho.total }}</p>
-<p>Valor entrega: {{ object.valor_entrega }}</p>
-<p>Total pedido: {{ object.total }}</p>
+<article class="message is-dark">
+    <div class="message-header">
+        <p>Checkout</p>
+    </div>
+    <div class="message-body">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child notification is-warning">
+                            <p>Total carrinho:</p>
+                            <p class="subtitle">R$ {{ object.carrinho.total }}</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-link">
+                            <p>Valor entrega:</p>
+                            <p class="subtitle">R$ {{ object.valor_entrega }}</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child notification is-success">
+                            <p>Total pedido:</p>
+                            <p class="subtitle">R$ {{ object.total }}</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+        <div style="text-align:center">
+            <a class="button is-dark">Finalizar</a>
+        </div>
+    </div>
+</article>
 
 {% endblock %}
 
