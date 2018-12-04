@@ -49,10 +49,9 @@
                     </div>
                     <div id="navbarMenuHeroB" class="navbar-menu">
                         <div class="navbar-start">
-                            {% if user.is_superuser %}
-                            <a href="{% url 'home' %}" class="navbar-item">
-                        Pedidos
-                        </a> {% endif %}
+                            <a href="{% url 'clima:clima' %}" class="navbar-item">
+                        Avisos
+                        </a>
                             <a href="{% url 'produtos:lista' %}" class="navbar-item">
                         Produtos
                         </a>

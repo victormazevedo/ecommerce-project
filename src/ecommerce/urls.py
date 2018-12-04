@@ -34,7 +34,8 @@ urlpatterns = [
     url(r'^produtos/', include("produtos.urls", namespace='produtos')),
     url(r'^pesquisa/', include("pesquisa.urls", namespace='pesquisa')),
     url(r'^admin/', admin.site.urls),
-    url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout')
+    url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    url(r'^avisos/', include("clima.urls", namespace='clima')),
 ]
 
 

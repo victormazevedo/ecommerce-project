@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'produtos',
     'pesquisa',
     'pedidos',
+    'clima',
 ]
 
 MIDDLEWARE = [
