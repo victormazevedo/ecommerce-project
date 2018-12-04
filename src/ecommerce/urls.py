@@ -33,13 +33,6 @@ urlpatterns = [
     url(r'^registro/$', register_page),
     url(r'^produtos/', include("produtos.urls", namespace='produtos')),
     url(r'^pesquisa/', include("pesquisa.urls", namespace='pesquisa')),
-    # url(r'^featured/$', ProdutoFeaturedListView.as_view()),
-    # url(r'^featured/(?P<pk>\d+)/$', ProdutoFeaturedDetailView.as_view()),
-    # url(r'^produtos/$', ProdutoListView.as_view()),
-    # url(r'^produtos-fbv/$', produto_list_view),
-    # # url(r'^produtos/(?P<pk>\d+)/$', ProdutoDetailView.as_view()),
-    # url(r'^produtos/(?P<slug>[\w-]+)/$', ProdutoDetailSlugView.as_view()),
-    # url(r'^produtos-fbv/(?P<pk>\d+)/$', produto_detail_view),
     url(r'^admin/', admin.site.urls),
     url(r'^logout/$', logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout')
 ]

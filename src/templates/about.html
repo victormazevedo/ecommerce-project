@@ -1,111 +1,44 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PedeRango</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-</head>
-
-<body>
-    <section class="hero is-danger is-large">
-        <!-- NAVBAR - BEGIN -->
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a href="{% url 'home' %}" class="navbar-item">
-                            <span class="icon is-large">
-                     <i class="fas fa-utensils"></i>
-                     </span>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                     </span>
-                    </div>
-                    <div id="navbarMenuHeroB" class="navbar-menu">
-                        <div class="navbar-start">
-                            {% if user.is_superuser %}
-                            <a href="{% url 'home' %}" class="navbar-item">
-                        Pedidos
-                        </a> {% endif %}
-                            <a href="{% url 'produtos:lista' %}" class="navbar-item">
-                        Produtos
-                        </a>
-                            <a href="{% url 'contact' %}" class="navbar-item">
-                        Fale Conosco
-                        </a>
-                            <a href="{% url 'about' %}" class="navbar-item is-active">
-                        Sobre
-                        </a>
-                        </div>
-
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                            <span class="tag is-white">Olá {{ user.get_username }}</span>
-                            <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="{% url 'logout' %}"><span>Sair</span>
-                            <span class="icon">
-                                        <i class="fas is-small fa-sign-out-alt"></i>
-                                    </span>
-                            </a>
-                            </span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- NAVBAR - END -->
-    </section>
-    <br/>
-    <br/>
-    <!-- CONTENT - BEGIN -->
-    <div class="container" style="width: 50%">
-        {{ premium_content }}
-        <div class="columns">
-            <div class="column is-full">
-                <div class="box has-text-centered">
-                    <img src="http://www.fatecrp.edu.br/wp-content/themes/fatecrp/dist/img/logo.png" />
-                    <br/>
-                    <br/> Projeto desenvolvido por alunos da FATEC-RP para
-                    <br/>a disciplina de Tópicos especiais em informatica.
-                </div>
-            </div>
-        </div>
-
-        <div class="tile is-ancestor">
-            <div class="tile is-vertical is-12">
-                <div class="tile">
-                    <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification is-primary">
-                            <p class="title">Desenvolvedores:</p>
-                            <p class="subtitle">Leonardo Leoni Maglia
-                                <br/>Victor Moura Azevedo</p>
-                        </article>
-                    </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification is-info">
-                            <p class="title">Tecnologias</p>
-                            <p class="subtitle">
-                                <ul>
-                                    <li>Python 3.6</li>
-                                    <li>Django 1.11</li>
-                                    <li>Bulma 0.7.2</li>
-                                    <li>GitHub</li>
-                                </ul>
-                            </p>
-                        </article>
-                    </div>
-                </div>
-
-            </div>
-
+{% block content %}
+{{ premium_content }}
+<div class="columns">
+    <div class="column is-full">
+        <div class="box has-text-centered">
+            <img src="http://www.fatecrp.edu.br/wp-content/themes/fatecrp/dist/img/logo.png" />
+            <br/>
+            <br/> Projeto desenvolvido por alunos da FATEC-RP para
+            <br/>a disciplina de Tópicos especiais em informatica.
         </div>
     </div>
-    <!-- CONTENT - END -->
-</body>
+</div>
 
-</html>
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-12">
+        <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-primary">
+                    <p class="title">Desenvolvedores:</p>
+                    <p class="subtitle">Leonardo Leoni Maglia
+                        <br/>Victor Moura Azevedo</p>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child notification is-info">
+                    <p class="title">Tecnologias</p>
+                    <p class="subtitle">
+                        <ul>
+                            <li>Python 3.6</li>
+                            <li>Django 1.11</li>
+                            <li>Bulma 0.7.2</li>
+                            <li>GitHub</li>
+                        </ul>
+                    </p>
+                </article>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

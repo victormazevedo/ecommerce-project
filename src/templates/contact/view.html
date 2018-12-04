@@ -1,118 +1,47 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PedeRango</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-</head>
+{% block content %}
+<div class="columns">
+    <div class="column is-full">
+        <form method="POST"> {% csrf_token %}
+            <div class="box">
 
-<body>
-    {% if request.user.is_authenticated %}
-    <section class="hero is-danger is-large">
-        <!-- NAVBAR - BEGIN -->
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a href="{% url 'home' %}" class="navbar-item">
-                            <span class="icon is-large">
-                     <i class="fas fa-utensils"></i>
-                     </span>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                     </span>
-                    </div>
-                    <div id="navbarMenuHeroB" class="navbar-menu">
-                        <div class="navbar-start">
-                            {% if user.is_superuser %}
-                            <a href="{% url 'home' %}" class="navbar-item">
-                        Pedidos
-                        </a> {% endif %}
-                            <a href="{% url 'produtos:lista' %}" class="navbar-item">
-                        Produtos
-                        </a>
-                            <a href="{% url 'contact' %}" class="navbar-item is-active">
-                        Fale Conosco
-                        </a>
-                            <a href="{% url 'about' %}" class="navbar-item">
-                        Sobre
-                        </a>
-                        </div>
+                <div class="field">
+                    <label class="label">Nome completo</label>
+                    <p class="control has-icons-left has-icons-right">
+                        {{ form.fullname }}
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                        </span>
+                    </p>
+                </div>
 
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                            <span class="tag is-white">Olá {{ user.get_username }}</span>
-                            <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="/logout"><span>Sair</span>
-                            <span class="icon">
-                                        <i class="fas is-small fa-sign-out-alt"></i>
-                                    </span>
-                            </a>
-                            </span>
-                            </span>
-                        </div>
+                <div class="field">
+                    <label class="label">Email</label>
+                    <p class="control has-icons-left has-icons-right">
+                        {{ form.email }}
+                        <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="control">
+                    <label class="label">Mensagem</label>
+
+                    <div class="control has-icons-left has-icons-right">
+                        {{ form.content }}
                     </div>
                 </div>
-            </nav>
-        </div>
-        <!-- NAVBAR - END -->
-    </section>
 
-    <br/>
-
-    <!-- CONTENT - BEGIN -->
-    <div class="container" style="width: 50%">
-        <div class="columns">
-            <div class="column is-full">
-                <form method="POST"> {% csrf_token %}
-                    <div class="box">
-
-                        <div class="field">
-                            <label class="label">Nome completo</label>
-                            <p class="control has-icons-left has-icons-right">
-                                {{ form.fullname }}
-                                <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <p class="control has-icons-left has-icons-right">
-                                {{ form.email }}
-                                <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                            </span>
-                            </p>
-                        </div>
-
-                        <div class="control">
-                            <label class="label">Mensagem</label>
-
-                            <div class="control has-icons-left has-icons-right">
-                                {{ form.content }}
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="field is-grouped is-grouped-right">
-                        <div class="control">
-                            <button type="submit" class="button is-danger">Enviar</button>
-                        </div>
-                    </div>
-                </form>
             </div>
-        </div>
-
+            <div class="field is-grouped is-grouped-right">
+                <div class="control">
+                    <button type="submit" class="button is-danger">Enviar</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <!-- CONTENT - END -->
-    {% endif %}
-</body>
+</div>
 
-</html>
+{% endblock %}

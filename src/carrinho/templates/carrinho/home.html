@@ -1,144 +1,60 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PedeRango</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<!-- CONTENT - BEGIN -->
+{% block content %}
+<div class="box">
+    {% if carrinho.produtos.exists %}
+    <table class="table" style="width: 100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome do Produto</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in carrinho.produtos.all %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><a href="{{ produto.get_absolute_url }}">{{ produto.name }}</a></td>
+                <td>R$ {{ produto.price }}</td>
+                <td>{% include 'produtos/snippets/atualizar-carrinho.html' with produto=produto carrinho=carrinho no_carrinho=True %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    <style>
-        .botao-flutuante {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #ff3860;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 2px 2px 3px #999;
-        }
-
-        .btn-carrinho {
-            margin-top: 22px;
-        }
-    </style>
-</head>
-
-<body>
-    <section class="hero is-danger is-large">
-        <!-- NAVBAR - BEGIN -->
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container" style="height: px">
-                    <div class="navbar-brand">
-                        <a href="{% url 'home' %}" class="navbar-item">
-                            <span class="icon is-large">
-                     <i class="fas fa-utensils"></i>
-                     </span>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenuHeroB"></span>
-                    </div>
-                    <div id="navbarMenuHeroB" class="navbar-menu">
-                        <div class="navbar-start">
-                            {% if user.is_superuser %}
-                            <a href="{% url 'home' %}" class="navbar-item">
-                        Pedidos
-                        </a> {% endif %}
-                            <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
-                        Produtos
-                        </a>
-                            <a href="{% url 'contact' %}" class="navbar-item">
-                        Fale Conosco
-                        </a>
-                            <a href="{% url 'about' %}" class="navbar-item">
-                        Sobre
-                        </a>
-                        </div>
-
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                            <span class="tag is-white">Olá {{ user.get_username }}</span>
-                            <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="/logout"><span>Sair</span>
-                            <span class="icon">
-                                        <i class="fas is-small fa-sign-out-alt"></i>
-                                    </span>
-                            </a>
-                            </span>
-                            </span>
-                        </div>
-                    </div>
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical is-12">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification is-primary">
+                        <p>Sub-total:</p>
+                        <p class="subtitle">R$ {{ carrinho.subtotal }}</p>
+                    </article>
                 </div>
-            </nav>
-        </div>
-        <!-- NAVBAR - END -->
-    </section>
-
-    <br/>
-    <br/>
-
-    <!-- CONTENT - BEGIN -->
-    {% block content %}
-    <div class="container" style="width: 50%">
-        <div class="box">
-            {% if carrinho.produtos.exists %}
-            <table class="table" style="width: 100%">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome do Produto</th>
-                        <th>Preço</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for produto in carrinho.produtos.all %}
-                    <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="{{ produto.get_absolute_url }}">{{ produto.name }}</a></td>
-                        <td>R$ {{ produto.price }}</td>
-                        <td>{% include 'produtos/snippets/atualizar-carrinho.html' with produto=produto carrinho=carrinho no_carrinho=True %}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            <div class="tile is-ancestor">
-                <div class="tile is-vertical is-12">
-                    <div class="tile">
-                        <div class="tile is-parent is-vertical">
-                            <article class="tile is-child notification is-primary">
-                                <p>Sub-total:</p>
-                                <p class="subtitle">R$ {{ carrinho.subtotal }}</p>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child notification is-info">
-                                <p>Total</p>
-                                <p class="subtitle">R$ {{ carrinho.total }}</p>
-                            </article>
-                        </div>
-                    </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info">
+                        <p>Total</p>
+                        <p class="subtitle">R$ {{ carrinho.total }}</p>
+                    </article>
                 </div>
-
             </div>
-            {% else %}
-            <p class="lead">Carrinho vazio!</p>
-            {% endif %} {% endblock %}
-            <!-- CONTENT - END -->
         </div>
+
     </div>
+    {% else %}
+    <p class="lead">Carrinho vazio!</p>
+    {% endif %}
+</div>
 
-    <a href="{% url 'carrinho:home' %}" class="botao-flutuante">
-        <i class="fa fa-shopping-cart btn-carrinho"></i> {{ request.session.total_itens }}
-    </a>
+{% if carrinho.produtos.exists %}
+<a href="{% url "carrinho:checkout" %}" class="button is-success" style="float:right">Finalizar pedido</a>
+{% endif %}
 
-</body>
+{% endblock %}
 
-</html>
+<a href="{% url 'carrinho:home' %}" class="botao-flutuante">
+    <i class="fa fa-shopping-cart btn-carrinho"></i> {{ request.session.total_itens }}
+</a>

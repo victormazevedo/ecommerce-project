@@ -1,142 +1,53 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PedeRango</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% block content %}
+{{ premium_content }}
 
-    <style>
-        .botao-flutuante {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #ff3860;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 2px 2px 3px #999;
-        }
-
-        .btn-carrinho {
-            margin-top: 22px;
-        }
-    </style>
-</head>
-
-<body>
-    <section class="hero is-danger is-large">
-        <!-- NAVBAR - BEGIN -->
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a href="index.html" class="navbar-item">
-                            <span class="icon is-large">
-                     <i class="fas fa-utensils"></i>
-                     </span>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                     <span></span>
-                        <span></span>
-                        <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenuHeroB" class="navbar-menu">
-                        <div class="navbar-start">
-                            {% if user.is_superuser %}
-                            <a href="{% url 'home' %}" class="navbar-item">
-                        Pedidos
-                        </a> {% endif %}
-                            <a href="{% url 'produtos:lista' %}" class="navbar-item is-active">
-                        Produtos
-                        </a>
-                            <a href="{% url 'contact' %}" class="navbar-item">
-                        Fale Conosco
-                        </a>
-                            <a href="{% url 'about' %}" class="navbar-item">
-                        Sobre
-                        </a>
-                        </div>
-
-                        <div class="navbar-end">
-                            <span class="navbar-item">
-                            <span class="tag is-white">Olá {{ user.get_username }}</span>
-                            <span class="tag is-black" style="margin-left: 10px;">
-                                <a href="{% url 'logout' %}"><span>Sair</span>
-                            <span class="icon">
-                                        <i class="fas is-small fa-sign-out-alt"></i>
-                                    </span>
-                            </a>
-                            </span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <!-- NAVBAR - END -->
-    </section>
-    <br/>
-    <!-- CONTENT - BEGIN -->
-    <div class="container" style="width: 50%">
-        {{ premium_content }}
-
-        <article class="message is-danger">
-            <div class="message-header">
-                <p>{{ object.name }}</p>
-            </div>
-            <div class="message-body">
-
-                <div class="box" style="width: 38%; float: left;">
-                    {% if object.image %}
-                    <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" /> {% endif %}
-
-                    <span class="tag is-success is-large" style="position: absolute; margin-left: 50px;">
-                    R$ {{ object.price }}
-                  </span>
-                </div>
-
-                <div style="width: 60%; float: right;">
-                    {{ object.description }}
-
-                    <br/>
-                    <br/> {% include 'produtos/snippets/atualizar-carrinho.html' with produto=object carrinho=carrinho %}
-                </div>
-
-                <div style="clear: both;"></div>
-            </div>
-        </article>
-
-        {% if user.is_superuser %}
-        <div style="float: right;">
-            <a class="button is-small is-warning" href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/change/">
-                <span class="icon">
-                      <i class="fas is-small fa-edit"></i>
-                  </span>
-                <span>Editar</span>
-            </a>
-
-            <a class="button is-small is-danger" href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/delete/">
-                <span class="icon">
-                      <i class="fas is-small fa-trash"></i>
-                  </span>
-                <span>Excluir</span>
-            </a>
-        </div>
-        {% endif %}
-
+<article class="message is-danger">
+    <div class="message-header">
+        <p>{{ object.name }}</p>
     </div>
-    <!-- CONTENT - END -->
+    <div class="message-body">
 
-    <a href="{% url 'carrinho:home' %}" class="botao-flutuante">
-        <i class="fa fa-shopping-cart btn-carrinho"></i> {{ request.session.total_itens }}
+        <div class="box" style="width: 38%; float: left;">
+            {% if object.image %}
+            <img src='{{ object.image.url }}' class="img-fluid" style="width: 200px;height: 200px" /> {% endif %}
+
+            <span class="tag is-success is-large" style="position: absolute; margin-left: 50px;">
+            R$ {{ object.price }}
+          </span>
+        </div>
+
+        <div style="width: 60%; float: right;">
+            {{ object.description }}
+
+            <br/>
+            <br/> {% include 'produtos/snippets/atualizar-carrinho.html' with produto=object carrinho=carrinho %}
+        </div>
+
+        <div style="clear: both;"></div>
+    </div>
+</article>
+
+{% if user.is_superuser %}
+<div style="float: right;">
+    <a class="button is-small is-warning" href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/change/">
+        <span class="icon">
+              <i class="fas is-small fa-edit"></i>
+          </span>
+        <span>Editar</span>
     </a>
 
-</body>
-</html>
+    <a class="button is-small is-danger" href="http://127.0.0.1:8000/admin/produtos/produto/{{ object.id }}/delete/">
+        <span class="icon">
+              <i class="fas is-small fa-trash"></i>
+          </span>
+        <span>Excluir</span>
+    </a>
+</div>
+{% endif %}
+
+<a href="{% url 'carrinho:home' %}" class="botao-flutuante">
+    <i class="fa fa-shopping-cart btn-carrinho"></i> {{ request.session.total_itens }}
+</a>
+{% endblock %}
