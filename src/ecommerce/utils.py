@@ -8,6 +8,16 @@ def random_string_generator(size=10, chars=string.ascii_lowercase + string.digit
     return ''.join(random.choice(chars) for _ in range(size))
 
 
+def unique_id_pedido_generator(instance):
+    id_pedido_novo = random_string_generator()
+
+    Klass = instance.__class__
+    qs_exists = Klass.objects.filter(id_pedido=id_pedido_novo).exists()
+    if qs_exists:
+        return unique_slug_generator(instance)
+    return id_pedido_novo
+
+
 def unique_slug_generator(instance, new_slug=None):
     """
     This is for a Django project and it assumes your instance

@@ -5,7 +5,7 @@ import os
 from django.urls import reverse
 from django.db import models
 from django.db.models.signals import pre_save, post_save
-from .utils import unique_slug_generator
+from ecommerce.utils import unique_slug_generator
 
 
 def get_filename_extension(filename):  # usado para pegar a extensão da img que foi upada
