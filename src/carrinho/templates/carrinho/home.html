@@ -25,17 +25,24 @@
         </tbody>
     </table>
 
+
+    {% else %}
+    <p class="lead">Carrinho vazio!</p>
+    {% endif %}
+</div>
+
+{% if carrinho.produtos.exists %}
     <div class="tile is-ancestor">
-        <div class="tile is-vertical is-12">
+        <div class="tile is-vertical is-7">
             <div class="tile">
                 <div class="tile is-parent is-vertical">
-                    <article class="tile is-child notification is-primary">
+                    <article class="tile is-child notification is-warning">
                         <p>Sub-total:</p>
                         <p class="subtitle">R$ {{ carrinho.subtotal }}</p>
                     </article>
                 </div>
                 <div class="tile is-parent">
-                    <article class="tile is-child notification is-info">
+                    <article class="tile is-child notification is-link">
                         <p>Total</p>
                         <p class="subtitle">R$ {{ carrinho.total }}</p>
                     </article>
@@ -43,14 +50,10 @@
             </div>
         </div>
 
-    </div>
-    {% else %}
-    <p class="lead">Carrinho vazio!</p>
-    {% endif %}
-</div>
+        <a href="{% url "carrinho:checkout" %}" class="button is-success" style="margin-left:120px;margin-top: 35px">Finalizar pedido</a>
 
-{% if carrinho.produtos.exists %}
-<a href="{% url "carrinho:checkout" %}" class="button is-success" style="float:right">Finalizar pedido</a>
+    </div>
+
 {% endif %}
 
 {% endblock %}
