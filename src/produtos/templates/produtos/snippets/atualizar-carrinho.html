@@ -1,29 +1,25 @@
 <form method='POST' action='{% url "carrinho:update" %}' class="form" style="float:right"> {% csrf_token %}
-    <input type='hidden' name='produtos_id' value='{{ produto.id}}' />
-
-    {% if no_carrinho %}
-        <button type='submit'  class="button is-danger">
-            <span class="icon">
+    <input type='hidden' name='produtos_id' value='{{ produto.id}}' /> {% if no_carrinho %}
+    <button type='submit' class="button is-danger">
+        <span class="icon">
               <i class="fas fa-times"></i>
             </span>
-            <span>Remover</span>
-        </button>
-    {% else %}
-        {% if produto in carrinho.produtos.all %}
-            Já no carrinho<br/>
-            <button type='submit' class="button is-warning">
-                <span class="icon">
+        <span>Remover</span>
+    </button>
+    {% else %} {% if produto in carrinho.produtos.all %} Já no carrinho
+    <br/>
+    <button type='submit' class="button is-warning">
+        <span class="icon">
                   <i class="fas fa-times"></i>
                 </span>
-                <span>Remover?</span>
-            </button>
-        {% else %}
-            <button type='submit' class="button is-link">
-                <span class="icon">
+        <span>Remover?</span>
+    </button>
+    {% else %}
+    <button type='submit' class="button is-link">
+        <span class="icon">
                   <i class="fas fa-plus"></i>
                 </span>
-                <span>Adicionar ao carrinho</span>
-            </button>
-        {% endif %}
-    {% endif %}
+        <span>Adicionar ao carrinho</span>
+    </button>
+    {% endif %} {% endif %}
 </form>

@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, get_user_model, logout
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 
 from .forms import ContactForm, LoginForm, RegisterForm
 
@@ -89,6 +88,7 @@ def register_page(request):
         password = form.cleaned_data.get("password")
         new_user = User.objects.create_user(username, email, password)
         print(new_user)
+        return HttpResponseRedirect("/login/")
 
     return render(request, "auth/register.html", context)
 

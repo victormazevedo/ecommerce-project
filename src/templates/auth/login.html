@@ -1,69 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>PedeRango - Login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-        <style type="text/css">
-        	body {
-        		background: #ff3860;
-        	}
-			.centerall {
-				height: 100vh;
-				padding: 0;
-				display: flex;
-				flex-wrap: nowrap;
-				justify-content: center;
-				align-items: center;
-			}
-        </style>
-    </head>
-    <body>
-    	<div class="container">
-    		<div class="centerall">
-	    		<form method='POST'> {% csrf_token %}
-	    			<div class="box">
-                        <img style="margin-left: 10px" src="https://i.imgur.com/3kk9EQi.png" width="250" height="50"/>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PedeRango - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-	    				<p style="text-align: center;">Faça login no sistema antes de continuar</p><br/>
+    <style type="text/css">
+        body {
+            background: #ff3860;
+        }
 
-                        <div class="field">
-                          <p class="control has-icons-left has-icons-right">
-                              {{ form.username }}
-                               <span class="icon is-small is-left">
+        .centerall {
+            height: 100vh;
+            padding: 0;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="centerall">
+            <form method='POST'> {% csrf_token %}
+                <div class="box">
+                    <img style="margin-left: 10px" src="https://i.imgur.com/3kk9EQi.png" width="250" height="50" />
+
+                    <p style="text-align: center;">Faça login no sistema antes de continuar</p>
+                    <br/>
+
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            {{ form.username }}
+                            <span class="icon is-small is-left">
                                    <i class="fas fa-user"></i>
                                </span>
-                               <span class="icon is-small is-right">
+                            <span class="icon is-small is-right">
                                    <i class="fas fa-check"></i>
                                </span>
-                          </p>
-                        </div>
+                        </p>
+                    </div>
 
-						<div class="field">
-						  <p class="control has-icons-left">
-                              {{ form.password }}
-                              <span class="icon is-small is-left">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            {{ form.password }}
+                            <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                               </span>
-						  </p>
-						</div>
+                        </p>
+                    </div>
 
-						<div class="field is-grouped is-grouped-centered">
-                            <div class="control">
-                                <a href="{% url 'register' %}" class="button is-success">Registre-se</a>
-                            </div>
-
-                            <div class="control">
-                                <button type='submit' class="button is-danger">Acessar</button>
-                            </div>
+                    <div class="field is-grouped is-grouped-centered">
+                        <div class="control">
+                            <a href="{% url 'register' %}" class="button is-success">Registre-se</a>
                         </div>
-	    			</div>
-	    		</form>
-	    	</div>
-    	</div>
-    </body>
+
+                        <div class="control">
+                            <button type='submit' class="button is-danger">Acessar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>
