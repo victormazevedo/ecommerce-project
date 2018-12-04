@@ -11,12 +11,12 @@
             <span>Novo produto</span>
         </a>
 
-        <button class="button is-success is-small" name="btnExportJson">
+        <a class="button is-success is-small" href="{% url 'produtos:export_produtos' %}">
             <span class="icon is-small">
                       <i class="fas fa-file-export"></i>
                   </span>
             <span>Exportar</span>
-        </button>
+        </a>
     </div>
     {% endif %}
 
@@ -48,4 +48,3 @@
     </a>
 
 {% endblock %}
-

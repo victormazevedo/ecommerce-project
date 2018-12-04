@@ -1,6 +1,11 @@
+import json
+import io
+
 from django.http import Http404
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+from decimal import Decimal
 
 from carrinho.models import Carrinho
 from .models import Produto
@@ -113,3 +118,19 @@ def produto_detail_view(request, pk=None, *args, **kwargs):
         'object': instance
     }
     return render(request, "produtos/detalhe.html", context)
+
+
+def _json_encoder(obj):
+    if isinstance(obj, Decimal):
+        return float(obj)
+
+def export_produtos(request):
+    data = list(Produto.objects.values())
+    content = io.StringIO()
+    json.dump(data, content, default=_json_encoder, indent=4, sort_keys=True, ensure_ascii=False)
+
+    response = HttpResponse(content.getvalue().encode('utf8'), content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename=Produtos.json'
+
+    return response
+
